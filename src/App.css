@@ -26,3 +26,7 @@ mysearchbar{
   width: 360px;
   margin: auto;
 }
+
+.card{
+  min-width: 15rem;
+}
