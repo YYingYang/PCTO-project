@@ -17,9 +17,9 @@
 
   <body>
     <header>
-      <div  class="container-fluid">
-        <img src="assets\logo.png" alt="" class="logo"/>
-        <p  >
+      <div class="container-fluid">
+        <img src="assets\logo.png" alt="" class="logo" />
+        <p>
           Cinema
           <button type="button" class="btn btn-secondary">Accedi</button>
           <button type="button" class="btn btn-secondary">Registrati</button>
@@ -31,18 +31,24 @@
       Selezione dei film
     </h2>
     <!-- search bar and button -->
-      <form class="d-flex" >
-        <input
+    <form class="d-flex">
+      <input
         id="search"
-          class="form-control me-2"
-          value=""
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="button" onclick="app.search()">Search</button>
-      </form>
-    <br>
-      <!-- list of film / result of reseach -->
+        class="form-control me-2"
+        value=""
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-success"
+        type="button"
+        onclick="app.search()"
+      >
+        Search
+      </button>
+    </form>
+    <br />
+    <!-- list of film / result of reseach -->
     <div id="list" class="row"></div>
     <!-- #TODO: Integra file js-->
     <script
