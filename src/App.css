@@ -31,9 +31,7 @@ header div.container-fluid {
   margin-right: 1rem;
 }
 
-
-
-.card-body{
+.card-body {
   justify-content: space-between;
   flex-direction: column;
   display: flex;
