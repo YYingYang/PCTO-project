@@ -17,9 +17,9 @@
 
   <body>
     <header>
-      <div  class="container-fluid" style="text-align: center; font-weight: 600; background-color: black;">
-        <img src="assets\logo.png" alt="" style=" margin-top: 5px; float: left; width: 70px; height: 70px; border-radius: 100%;"/>
-        <p  style="height: 80px; font-size: 50px; color: aqua;">
+      <div  class="container-fluid">
+        <img src="assets\logo.png" alt="" class="logo"/>
+        <p  >
           Cinema
           <button type="button" class="btn btn-secondary">Accedi</button>
           <button type="button" class="btn btn-secondary">Registrati</button>
@@ -31,7 +31,7 @@
       Selezione dei film
     </h2>
     <!-- search bar and button -->
-      <form class="d-flex" style=" width: 360px; margin: auto;">
+      <form class="d-flex" >
         <input
         id="search"
           class="form-control me-2"
@@ -43,7 +43,7 @@
       </form>
     <br>
       <!-- list of film / result of reseach -->
-    <div id="list"></div>
+    <div id="list" class="row"></div>
     <!-- #TODO: Integra file js-->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
