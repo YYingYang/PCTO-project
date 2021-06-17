@@ -2,31 +2,56 @@ body {
   font-size: 0.875rem;
 }
 
+header div.container-fluid {
+  text-align: center;
+  font-weight: 600;
+  background-color: black;
+  width: 100%;
+}
+
+.container-fluid p {
+  height: 80px;
+  font-size: 50px;
+  color: aqua;
+}
+
+.logo {
+  margin-top: 0.5rem;
+  float: left;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+}
 
 .btn-secondary {
   float: right;
-  width: 100px;
-  height: 50px;
-  margin-top: 15px;
-  margin-right: 3px;
+  width: 8rem;
+  height: 3rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.d-flex{
+  width: 30rem; margin: auto;
 }
 
 
-ul#list {
-  width: 100%;
-  text-align: center;
-}
-
-#list {
-  display: flex;
-  justify-content: space-around;
-}
-
-mysearchbar{
-  width: 360px;
-  margin: auto;
-}
-
-.card{
+.card {
   min-width: 15rem;
+  width: 18rem;
+  max-height: 100rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.row {
+  display: flex;
+  justify-self: center;
+}
+
+.col-sm {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
