@@ -1,39 +1,38 @@
 class App {
   constructor(list) {
-   
-    this.key='c4d79d0d1e50bf8bc86b7afbd240e4df'
-    this.loadMovie()
+    this.key = "c4d79d0d1e50bf8bc86b7afbd240e4df";
+    this.loadMovie();
     // console.log(this.list.length)
-    
+
     // this.display(this.list)
-    
   }
 
   loadMovie() {
     //request to the site for the movies data/list
-    (async()=>{
-      const req = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en&page=1`);
+    (async () => {
+      const req = await fetch(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en&page=1`
+      );
       const data = await req.json();
-      console.log(data.results[0].id); 
-      console.log(data.results[0].img); 
-      this.list=[]
-
-      const img_path = await fetch(`https://api.themoviedb.org/3/movie/${data.results[0].id}/images?api_key=${this.key}&language=en`);
-      const imgpath = await img_path.json();
-      console.log(imgpath)
+      // console.log(data.results[0].id);
+      // console.log(data.results[0].img);
+      this.list = [];
 
       // copy usefull data in a list of movie
-      for(let i=0; i<data.results.length; i++)
-        this.list.push(new Movie(data.results[i].original_title,
-           data.results[i].overview,
-           data.results[i].poster_path,
-           data.results[i].id,
-           ))
-      console.log(this.list)
-      this.displayCard(this.list)
-    })()
+      for (let i = 0; i < data.results.length; i++)
+        this.list.push(
+          new Movie(
+            data.results[i].original_title,
+            data.results[i].overview,
+            data.results[i].poster_path,
+            data.results[i].id
+          )
+        );
+      // console.log(this.list);
+      this.displayCard(this.list);
+    })();
   }
-  
+
   /*display(list) {
     let obj = document.getElementById("list");
     let ul = document.createElement("ul");
@@ -51,34 +50,39 @@ class App {
   }*/
 
   // insert card with movie data
-  displayCard(list){
-    let str=""
-    for(let i = 0; i < list.length; i++)
-      str+=`<div class="card" style="width: 18rem; max-height: 30rem; min-widht: 30rem  ">
-      <img src=https://www.themoviedb.org/t/p/w600_and_h900_bestv2${list[i].img} class="card-img-top" alt="...">
+  displayCard(list) {
+    let str = "";
+    for (let i = 0; i < list.length; i++)
+      str += `<div class="col-sm"><div class="card" >
+      <img src=https://www.themoviedb.org/t/p/w600_and_h900_bestv2${
+        list[i].img
+      } class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">${list[i].title}</h5>
-        <p class="card-text">${list[i].description}</p>
+        <p class="card-text">${list[i].reduceChracter()}</p>
+        <div class="btn-holder">
         <a href="#" class="btn btn-primary">Details</a>
+        </div>
       </div>
-      </div>`
-    document.getElementById("list").innerHTML=str  
+      </div></div>`;
+    document.getElementById("list").innerHTML = str;
   }
-  
-  ricerca() {
+
+  // craete a list of movie=> result of search by title
+  search() {
     let str = document.getElementById("search").value;
-    let temp=[];
+    let temp = [];
     for (let i = 0; i < this.list.length; i++) {
-      if(this.list[i].title.toLowerCase().includes(str.toLowerCase()))
-        temp.push(this.list[i])
+      if (this.list[i].title.toLowerCase().includes(str.toLowerCase()))
+        temp.push(this.list[i]);
     }
-    if(temp.length==0)
-      document.getElementById("list").innerHTML = "nulla";
-    else{
-      document.getElementById("list").innerHTML=""  
-      this.displayCard(temp)
-    } 
-    document.getElementById("search").value=""
+    if (temp.length == 0)
+      document.getElementById("list").innerHTML = "Nothing found";
+    else {
+      document.getElementById("list").innerHTML = "";
+      this.displayCard(temp);
+    }
+    document.getElementById("search").value = "";
   }
 }
 
@@ -87,14 +91,20 @@ class Movie {
     this.title = title;
     // this.category = category;
     // this.year = year;
-    this.description=description;
-    this.img=img;
-    this.id=id;
-    this.date=date;
+    this.description = description;
+    this.img = img;
+    this.id = id;
+    this.date = date;
   }
-  movieToString(){
-    let str = this.title + ", " + this.description + ", " + this.date + ", " + this.img
+  movieToString() {
+    let str =
+      this.title + ", " + this.description + ", " + this.date + ", " + this.img;
     return str;
+  }
+
+  reduceChracter() {
+    const max = 200;
+    return this.description.slice(0, max) + "...";
   }
 }
 
@@ -112,7 +122,3 @@ class Movie {
 ]*/
 
 const app = new App(list);
-
-
-
-
