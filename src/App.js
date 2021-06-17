@@ -2,35 +2,27 @@ class App {
   constructor(list) {
     this.key = "c4d79d0d1e50bf8bc86b7afbd240e4df";
     this.loadMovie();
-    // console.log(this.list.length)
-
-    // this.display(this.list)
   }
 
   loadMovie() {
     //request to the site for the movies data/list
-    (async () => {
-      const req = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en&page=1`
-      );
-      const data = await req.json();
-      // console.log(data.results[0].id);
-      // console.log(data.results[0].img);
-      this.list = [];
-
-      // copy usefull data in a list of movie
-      for (let i = 0; i < data.results.length; i++)
-        this.list.push(
-          new Movie(
-            data.results[i].original_title,
-            data.results[i].overview,
-            data.results[i].poster_path,
-            data.results[i].id
-          )
-        );
-      // console.log(this.list);
-      this.displayCard(this.list);
-    })();
+    const req = fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${this.key}&language=en&page=1`
+    )
+      .then((results) => results.json())
+      .then((data) => {
+        this.list = [];
+        for (let i = 0; i < data.results.length; i++)
+          this.list.push(
+            new Movie(
+              data.results[i].original_title,
+              data.results[i].overview,
+              data.results[i].poster_path,
+              data.results[i].id
+            )
+          );
+        this.displayCard(this.list);
+      });
   }
 
   /*display(list) {
@@ -87,10 +79,8 @@ class App {
 }
 
 class Movie {
-  constructor(title, /*category, year,*/ description, img, id, date) {
+  constructor(title, description, img, id, date) {
     this.title = title;
-    // this.category = category;
-    // this.year = year;
     this.description = description;
     this.img = img;
     this.id = id;
