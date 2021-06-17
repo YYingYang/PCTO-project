@@ -30,6 +30,7 @@
     <h2 style="display: flex; justify-content: space-around">
       Selezione dei film
     </h2>
+    <!-- search bar and button -->
       <form class="d-flex" style=" width: 360px; margin: auto;">
         <input
         id="search"
@@ -38,10 +39,10 @@
           placeholder="Search"
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="button" onclick="app.ricerca()">Search</button>
+        <button class="btn btn-outline-success" type="button" onclick="app.search()">Search</button>
       </form>
     <br>
-
+      <!-- list of film / result of reseach -->
     <div id="list"></div>
     <!-- #TODO: Integra file js-->
     <script
