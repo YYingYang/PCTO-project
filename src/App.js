@@ -111,4 +111,4 @@ class Movie {
   new Movie("Giungla13", "fiction", "2021"),
 ]*/
 
-const app = new App(list);
+const app = new App();
