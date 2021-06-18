@@ -59,6 +59,7 @@ header div.container-fluid {
 .row {
   display: flex;
   justify-self: center;
+  margin: 0;
 }
 
 .col-sm {
